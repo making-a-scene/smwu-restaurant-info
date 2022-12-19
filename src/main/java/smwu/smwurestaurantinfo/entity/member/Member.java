@@ -31,7 +31,10 @@ public class Member extends BaseEntity {
     private LocalDateTime createdAt;
 
     @Builder
-    public Member(String email) {
+    public Member(String email, Role role, UserStatus status, String nickname) {
         this.email = email;
+        this.nickname = nickname;
+        this.role = role;
+        this.status = status;
     }
 }

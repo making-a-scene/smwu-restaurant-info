@@ -41,7 +41,6 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
                 .and()
                 .oauth2Login()
-                .loginPage("/oauth2/authorization/naver")
                 .successHandler(new OAuth2LoginSuccessHandler())
                 .userInfoEndpoint().userService(defaultOAuth2UserService());
 
