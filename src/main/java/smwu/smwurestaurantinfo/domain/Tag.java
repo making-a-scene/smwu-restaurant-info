@@ -3,8 +3,8 @@ package smwu.smwurestaurantinfo.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
-import smwu.smwurestaurantinfo.domain.place.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,5 +15,8 @@ public class Tag {
     @Id @GeneratedValue
     private Long id;
     private String name;
+
+    @OneToMany(mappedBy = "tag")
+    private List<RestaurantTag> restaurantTags = new ArrayList<>();
 
 }
