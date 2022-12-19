@@ -1,9 +1,9 @@
 package smwu.smwurestaurantinfo.api.dto;
 
 import lombok.Data;
-import smwu.smwurestaurantinfo.entity.member.Member;
-import smwu.smwurestaurantinfo.entity.member.Role;
-import smwu.smwurestaurantinfo.entity.member.UserStatus;
+import smwu.smwurestaurantinfo.domain.member.Member;
+import smwu.smwurestaurantinfo.domain.member.Role;
+import smwu.smwurestaurantinfo.domain.member.UserStatus;
 
 @Data
 public class GenerateMemberRequestDto {

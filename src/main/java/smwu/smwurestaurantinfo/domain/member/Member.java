@@ -1,4 +1,4 @@
-package smwu.smwurestaurantinfo.entity.member;
+package smwu.smwurestaurantinfo.domain.member;
 
 import jakarta.persistence.*;
 import lombok.Builder;

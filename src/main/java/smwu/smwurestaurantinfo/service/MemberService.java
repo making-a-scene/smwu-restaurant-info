@@ -4,7 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import smwu.smwurestaurantinfo.api.dto.GenerateMemberRequestDto;
-import smwu.smwurestaurantinfo.entity.member.Member;
+import smwu.smwurestaurantinfo.domain.member.Member;
 import smwu.smwurestaurantinfo.repository.MemberRepository;
 
 import java.util.NoSuchElementException;

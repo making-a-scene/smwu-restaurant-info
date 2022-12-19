@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import smwu.smwurestaurantinfo.entity.member.Role;
+import smwu.smwurestaurantinfo.domain.member.Role;
 
 import java.util.Map;
 import java.util.NoSuchElementException;

@@ -3,7 +3,7 @@ package smwu.smwurestaurantinfo.oauth;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import smwu.smwurestaurantinfo.entity.member.Role;
+import smwu.smwurestaurantinfo.domain.member.Role;
 
 import java.util.Collection;
 import java.util.Collections;
