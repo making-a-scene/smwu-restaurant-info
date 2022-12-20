@@ -33,4 +33,6 @@ public class MemberService {
             return generateNewMember(memberGenerateDto);
         }
     }
+
+    // 로그아웃 : https://developers.naver.com/forum/posts/25174
 }

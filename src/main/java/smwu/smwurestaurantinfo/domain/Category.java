@@ -2,6 +2,7 @@ package smwu.smwurestaurantinfo.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import smwu.smwurestaurantinfo.domain.place.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,5 +16,5 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
-    private List<Category> includedPlaces = new ArrayList<>();
+    private List<Restaurant> includedPlaces = new ArrayList<>();
 }
