@@ -9,10 +9,13 @@ import java.util.List;
 
 @Entity
 @Getter
+@Table(name = "restaurant")
 public class Restaurant implements Place {
     @Id @GeneratedValue
+    @Column(name = "restaurant_id")
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "restaurant")

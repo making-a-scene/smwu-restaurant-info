@@ -1,7 +1,5 @@
 package smwu.smwurestaurantinfo.domain.tag;
 
-import java.awt.*;
-
 public enum TagClassification {
     MENU, // 대표 메뉴
     MOOD, // 식당 분위기
