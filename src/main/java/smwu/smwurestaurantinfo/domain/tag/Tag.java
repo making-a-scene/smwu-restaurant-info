@@ -15,8 +15,8 @@ public class Tag {
     @Id @GeneratedValue
     private Long id;
     private String name;
-
+    private TagClassification classification;
     @OneToMany(mappedBy = "tag")
-    private List<RestaurantTag> restaurantTags = new ArrayList<>();
+    private List<RestaurantTag> restaurantTags = new ArrayList<>(); // 해당 태그가 N번 이상 달린 식당들 목록
 
 }

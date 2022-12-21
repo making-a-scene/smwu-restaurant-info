@@ -22,4 +22,6 @@ public class RestaurantTag {
     @JsonIgnore
     private Tag tag;
 
+    private int count; // restaurant에 대해 tag가 선택된 횟수
+
 }
