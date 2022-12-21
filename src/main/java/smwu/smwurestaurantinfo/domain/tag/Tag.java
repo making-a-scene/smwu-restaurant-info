@@ -1,4 +1,4 @@
-package smwu.smwurestaurantinfo.domain;
+package smwu.smwurestaurantinfo.domain.tag;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

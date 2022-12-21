@@ -15,9 +15,6 @@ public class Restaurant implements Place {
 
     private String name;
 
-    @ManyToOne(fetch = LAZY)
-    @JsonIgnore
-    private Category category;
 
 
 }

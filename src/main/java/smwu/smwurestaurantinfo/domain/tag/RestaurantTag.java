@@ -1,4 +1,4 @@
-package smwu.smwurestaurantinfo.domain;
+package smwu.smwurestaurantinfo.domain.tag;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
