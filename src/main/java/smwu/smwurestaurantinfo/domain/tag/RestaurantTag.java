@@ -12,13 +12,13 @@ public class RestaurantTag {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id")
+    @JoinColumn(name = "restaurant_id", referencedColumnName = "restaurant_id")
     @JsonIgnore
     private Restaurant restaurant;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tag_id")
+    @JoinColumn(name = "tag_id", referencedColumnName = "tag_id")
     @JsonIgnore
     private Tag tag;
 

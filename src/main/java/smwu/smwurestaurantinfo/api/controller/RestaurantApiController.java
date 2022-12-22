@@ -1,4 +1,4 @@
-package smwu.smwurestaurantinfo.controller;
+package smwu.smwurestaurantinfo.api.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.RequestEntity;
@@ -15,10 +15,10 @@ import java.nio.charset.StandardCharsets;
 
 @RestController
 @Slf4j
-public class SearchApiController {
+public class RestaurantApiController {
 
-    private final String CLIENT_ID = "";
-    private final String CLIENT_SECRET = "";
+    private final String CLIENT_ID = "mOgG_Z0H1TceihUR73Tc";
+    private final String CLIENT_SECRET = "83gOpMyiwB";
 
     private String buildRequest(URI uri) {
         RestTemplate restTemplate = new RestTemplate();
@@ -48,5 +48,13 @@ public class SearchApiController {
                 .build()
                 .toUri()
         );
+    }
+
+    // http://localhost:8080/search/tags?name=tagNames1&name=tagNames2&name=tagNames3...
+    // String[] tagNames = request.getParameterValues("name");
+    @RequestMapping(value = "/search/tags", method = RequestMethod.GET)
+    public void getRestaurantListBySelectedTags(@RequestParam(name = "name") String... name) {
+        // 파라미터로 받은 모든 태그들에 대해 해당 태그를 가지고 있는 식당 목록을 받아오기
+
     }
 }

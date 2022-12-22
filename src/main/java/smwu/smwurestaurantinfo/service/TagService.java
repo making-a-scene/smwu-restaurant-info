@@ -28,7 +28,7 @@ public class TagService {
         return foundTag.getId();
     }
 
-    private Tag findTagById(Long id) {
+    public Tag findTagById(Long id) {
         return tagRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("해당 태그가 존재하지 않습니다."));
     }

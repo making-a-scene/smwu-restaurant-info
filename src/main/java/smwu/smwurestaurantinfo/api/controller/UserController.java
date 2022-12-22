@@ -1,4 +1,4 @@
-package smwu.smwurestaurantinfo.controller;
+package smwu.smwurestaurantinfo.api.controller;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
