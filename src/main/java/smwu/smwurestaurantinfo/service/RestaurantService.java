@@ -25,6 +25,11 @@ public class RestaurantService {
         return restaurantRepository.findByAddress(address);
     }
 
+    public Restaurant findById(Long id) {
+        return restaurantRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("일치하는 식당 정보가 존재하지 않습니다."));
+    }
+
     // 태그; or 조건
     // tagNames 내 태그 중 하나라도 가지고 있는 식당이라면 모두 반환
     public List<Restaurant> getOrListBySelectedTags(String[] tagNames) {
@@ -39,12 +44,7 @@ public class RestaurantService {
 
     // 태그; and 조건
     // tagNames에 들어 있는 모든 태그들을 가지고 있는 식당들만 반환
-//    public List<Restaurant> getAndListBySelectedTags(String[] tagNames) {
-//        for (String name : tagNames) {
-//            Tag tag = tagService.findTagById(tagService.findTagByName(name));
-//        }
-//
-//    }
+    // QueryDsl 사용
 
     @Transactional
     public Long RegisterNewRestaurant(RegisterRestaurantRequestDto registerRestaurantRequestDto) {
