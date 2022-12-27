@@ -14,12 +14,14 @@ public class RestaurantTag {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", referencedColumnName = "restaurant_id")
     @JsonIgnore
+    @net.minidev.json.annotate.JsonIgnore
     private Restaurant restaurant;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tag_id", referencedColumnName = "tag_id")
     @JsonIgnore
+    @net.minidev.json.annotate.JsonIgnore
     private Tag tag;
 
     private int count; // restaurant에 대해 tag가 선택된 횟수

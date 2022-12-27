@@ -7,13 +7,19 @@ import smwu.smwurestaurantinfo.domain.place.Restaurant;
 @Data
 @AllArgsConstructor
 public class RegisterRestaurantRequestDto {
-    private String name;
+    private String title;
     private String address;
+    private String link;
+    private int mapX;
+    private int mapY;
 
     public Restaurant toEntity() {
         return Restaurant.builder()
-                .name(name)
+                .title(title)
                 .address(address)
+                .link(link)
+                .mapX(mapX)
+                .mapY(mapY)
                 .build();
     }
 }

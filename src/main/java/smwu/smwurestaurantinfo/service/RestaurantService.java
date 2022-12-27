@@ -53,6 +53,7 @@ public class RestaurantService {
             throw new IllegalArgumentException("이미 등록되어 있는 식당입니다.");
         }
         Restaurant restaurant = registerRestaurantRequestDto.toEntity();
+        restaurantRepository.save(registerRestaurantRequestDto.toEntity());
         return restaurant.getId();
     }
 

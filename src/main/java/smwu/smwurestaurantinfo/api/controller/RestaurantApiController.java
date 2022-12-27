@@ -1,7 +1,5 @@
 package smwu.smwurestaurantinfo.api.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
@@ -9,18 +7,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import smwu.smwurestaurantinfo.api.ao.RestaurantInfoAo;
+import smwu.smwurestaurantinfo.api.dto.RegisterRestaurantRequestDto;
 import smwu.smwurestaurantinfo.domain.place.Restaurant;
 import smwu.smwurestaurantinfo.service.RestaurantService;
 
-import java.io.BufferedOutputStream;
-import java.io.IOException;
 import java.net.URI;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import java.util.NoSuchElementException;
 
 import static java.nio.charset.StandardCharsets.*;
 import static org.springframework.http.HttpStatus.*;
@@ -29,12 +22,12 @@ import static org.springframework.http.HttpStatus.*;
 @RequiredArgsConstructor
 @Slf4j
 public class RestaurantApiController {
-    private final RestaurantService restaurantService;
 
+    private final RestaurantService restaurantService;
     private static final String CLIENT_ID = "mOgG_Z0H1TceihUR73Tc";
     private static final String CLIENT_SECRET = "83gOpMyiwB";
 
-    private static String buildRequest(URI uri) {
+    private static String buildNaverSearchApiRequest(URI uri) {
         RestTemplate restTemplate = new RestTemplate();
         RequestEntity<Void> req = RequestEntity
                 .get(uri)
@@ -56,7 +49,7 @@ public class RestaurantApiController {
     public String searchRestaurantByTitle(@RequestParam(name = "value") String value) {
         ByteBuffer buffer = UTF_8.encode(value);
         String encode = UTF_8.decode(buffer).toString();
-        return buildRequest(
+        return buildNaverSearchApiRequest(
                 UriComponentsBuilder
                 .fromUriString("https://openapi.naver.com")
                 .path("/v1/search/local.json")
@@ -83,10 +76,19 @@ public class RestaurantApiController {
         }
         return new ResponseEntity<>(headers, MOVED_PERMANENTLY);
     }
+
+    // db에 존재하는 식당인 경우
     @RequestMapping(value = "/restaurant/detail/exist", method = RequestMethod.GET)
     public ResponseEntity<Object> showExistingRestaurantDetail(@RequestParam(name = "id") Long id) {
         Restaurant restaurant = restaurantService.findById(id);
         return buildResponseEntity(restaurant);
+    }
+
+    // 첫 리뷰 등록시 새로운 식당 엔티티 생성
+    @RequestMapping(value = "/smin/restaurant/new", method = RequestMethod.POST)
+    public ResponseEntity<Object> generateNewRestaurant(@RequestBody RegisterRestaurantRequestDto dto) {
+        Long newRestaurantId = restaurantService.RegisterNewRestaurant(dto);
+        return buildResponseEntity(restaurantService.findById(newRestaurantId));
     }
 
     // http://localhost:8080/restaurant/search/tags?name=tagNames1&name=tagNames2&name=tagNames3...
