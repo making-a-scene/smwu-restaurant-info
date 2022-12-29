@@ -1,8 +1,8 @@
 package smwu.smwurestaurantinfo.service;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import smwu.smwurestaurantinfo.api.dto.GenerateMemberRequestDto;
 import smwu.smwurestaurantinfo.domain.member.Member;
 import smwu.smwurestaurantinfo.repository.MemberRepository;
@@ -12,10 +12,9 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 public class MemberService {
     private final MemberRepository memberRepository;
-
     public Optional<Member> findByEmail(String email) {
         return memberRepository.findOneByEmail(email);
     }
@@ -25,6 +24,7 @@ public class MemberService {
         );
     }
 
+    @Transactional
     public Long generateNewMember(GenerateMemberRequestDto memberGenerateDto) {
         memberRepository.save(memberGenerateDto.toEntity());
         try {
@@ -34,5 +34,15 @@ public class MemberService {
         }
     }
 
+    // 숙대 학생임을 인증한 회원에 대해 UserStatus를 AUTHENTICATED로 변경
+    @Transactional
+    public void giveAuthToAuthenticatedMember(Long memberId) {
+        findById(memberId).updateStatus();
+    }
+
+    @Transactional
+    public void giveAuthToAdmin(Long adminMemberId) {
+        findById(adminMemberId).appointMemberToAdmin();
+    }
     // 로그아웃 : https://developers.naver.com/forum/posts/25174
 }

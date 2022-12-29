@@ -46,4 +46,13 @@ public class Member extends BaseEntity {
         this.role = role;
         this.status = status;
     }
+
+    public void updateStatus() {
+        this.status = UserStatus.ROLE_AUTHENTICATED;
+    }
+
+    public void appointMemberToAdmin() {
+        updateStatus();
+        this.role = Role.ROLE_ADMIN;
+    }
 }
