@@ -2,7 +2,10 @@ package smwu.smwurestaurantinfo.api.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.*;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -15,8 +18,9 @@ import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.ByteBuffer;
 
-import static java.nio.charset.StandardCharsets.*;
-import static org.springframework.http.HttpStatus.*;
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.springframework.http.HttpStatus.MOVED_PERMANENTLY;
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequiredArgsConstructor
