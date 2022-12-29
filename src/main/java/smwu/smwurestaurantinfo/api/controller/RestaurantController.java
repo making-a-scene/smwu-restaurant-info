@@ -25,7 +25,7 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-public class RestaurantApiController {
+public class RestaurantController {
 
     private final RestaurantService restaurantService;
     private static final String CLIENT_ID = "mOgG_Z0H1TceihUR73Tc";
