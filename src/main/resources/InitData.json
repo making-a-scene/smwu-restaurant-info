@@ -1,0 +1,28 @@
+{
+  "initMembers" : [
+    {
+      "nickname" : "유저1",
+      "email" : "test1@ruu.kr",
+      "status" : "ROLE_UNAUTHENTICATED",
+      "role" : "ROLE_USER"
+    },
+    {
+      "nickname" : "유저2",
+      "email" : "test2@ruu.kr",
+      "status" : "ROLE_UNAUTHENTICATED",
+      "role" : "ROLE_USER"
+    },
+    {
+      "nickname" : "유저3",
+      "email" : "test3@ruu.kr",
+      "status" : "ROLE_AUTHENTICATED",
+      "role" : "ROLE_USER"
+    },
+    {
+      "nickname" : "운영자1",
+      "email" : "test4@ruu.kr",
+      "status" : "ROLE_AUTHENTICATED",
+      "role" : "ROLE_ADMIN"
+    }
+  ]
+}

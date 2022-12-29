@@ -46,7 +46,7 @@ public class Member extends BaseEntity {
         this.role = role;
         this.status = status;
     }
-
+    
     public void updateStatus() {
         this.status = UserStatus.ROLE_AUTHENTICATED;
     }
